@@ -15,8 +15,7 @@ class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPe
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        centralManager = CBCentralManager(delegate: self, queue: nil)
-        //        centralManager.scanForPeripheralsWithServices(nil, options: nil)
+        centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
     }
     
     override func didReceiveMemoryWarning() {
