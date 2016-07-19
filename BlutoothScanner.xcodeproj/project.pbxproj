@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0965270B1D3CD16F00833CEF /* UITestDeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0965270A1D3CD16F00833CEF /* UITestDeviceListViewController.swift */; };
+		0965270C1D3CD19100833CEF /* DeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A716C1D3921C300B0350A /* DeviceListViewController.swift */; };
 		096A716B1D3921C300B0350A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A716A1D3921C300B0350A /* AppDelegate.swift */; };
 		096A716D1D3921C300B0350A /* DeviceListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A716C1D3921C300B0350A /* DeviceListViewController.swift */; };
 		096A71701D3921C300B0350A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096A716E1D3921C300B0350A /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 		096A71991D39226500B0350A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096A71981D39226500B0350A /* CoreBluetooth.framework */; };
 		096A719B1D3922CB00B0350A /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A719A1D3922CB00B0350A /* BLEManager.swift */; };
 		096A719E1D39236500B0350A /* BLEHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A719D1D39236500B0350A /* BLEHandler.swift */; };
+		09E3FA621D3E028600469062 /* PeripheralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E3FA611D3E028600469062 /* PeripheralTableViewCell.swift */; };
+		09E3FA631D3E063700469062 /* PeripheralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E3FA611D3E028600469062 /* PeripheralTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,6 +41,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0965270A1D3CD16F00833CEF /* UITestDeviceListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITestDeviceListViewController.swift; sourceTree = "<group>"; };
 		096A71671D3921C300B0350A /* BlutoothScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlutoothScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		096A716A1D3921C300B0350A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		096A716C1D3921C300B0350A /* DeviceListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceListViewController.swift; sourceTree = "<group>"; };
@@ -53,6 +58,7 @@
 		096A71981D39226500B0350A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		096A719A1D3922CB00B0350A /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		096A719D1D39236500B0350A /* BLEHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEHandler.swift; sourceTree = "<group>"; };
+		09E3FA611D3E028600469062 /* PeripheralTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 				096A71761D3921C300B0350A /* Info.plist */,
 				096A719A1D3922CB00B0350A /* BLEManager.swift */,
 				096A719D1D39236500B0350A /* BLEHandler.swift */,
+				09E3FA611D3E028600469062 /* PeripheralTableViewCell.swift */,
 			);
 			path = BlutoothScanner;
 			sourceTree = "<group>";
@@ -132,6 +139,7 @@
 			children = (
 				096A718A1D3921C300B0350A /* BlutoothScannerUITests.swift */,
 				096A718C1D3921C400B0350A /* Info.plist */,
+				0965270A1D3CD16F00833CEF /* UITestDeviceListViewController.swift */,
 			);
 			path = BlutoothScannerUITests;
 			sourceTree = "<group>";
@@ -277,6 +285,7 @@
 				096A719E1D39236500B0350A /* BLEHandler.swift in Sources */,
 				096A716D1D3921C300B0350A /* DeviceListViewController.swift in Sources */,
 				096A719B1D3922CB00B0350A /* BLEManager.swift in Sources */,
+				09E3FA621D3E028600469062 /* PeripheralTableViewCell.swift in Sources */,
 				096A716B1D3921C300B0350A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -294,6 +303,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				096A718B1D3921C300B0350A /* BlutoothScannerUITests.swift in Sources */,
+				0965270B1D3CD16F00833CEF /* UITestDeviceListViewController.swift in Sources */,
+				0965270C1D3CD19100833CEF /* DeviceListViewController.swift in Sources */,
+				09E3FA631D3E063700469062 /* PeripheralTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -506,6 +518,7 @@
 				096A71911D3921C400B0350A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		096A71921D3921C400B0350A /* Build configuration list for PBXNativeTarget "BlutoothScannerTests" */ = {
 			isa = XCConfigurationList;
@@ -514,6 +527,7 @@
 				096A71941D3921C400B0350A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		096A71951D3921C400B0350A /* Build configuration list for PBXNativeTarget "BlutoothScannerUITests" */ = {
 			isa = XCConfigurationList;
@@ -522,6 +536,7 @@
 				096A71971D3921C400B0350A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

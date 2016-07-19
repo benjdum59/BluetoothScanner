@@ -57,13 +57,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BlutoothScanner/DeviceListViewController.swift"
-            timestampString = "490286508.267448"
+            filePath = "BlutoothScannerUITests/File.swift"
+            timestampString = "490525381.833625"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "49"
-            endingLineNumber = "49"
-            landmarkName = "centralManager(_:didDiscoverPeripheral:advertisementData:RSSI:)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "mockData()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -73,13 +73,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BlutoothScanner/DeviceListViewController.swift"
-            timestampString = "490286508.267448"
+            filePath = "BlutoothScannerUITests/UITestDeviceListViewController.swift"
+            timestampString = "490525775.733497"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "centralManager(_:didConnectPeripheral:)"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "initialize()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -89,13 +89,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BlutoothScanner/DeviceListViewController.swift"
-            timestampString = "490286508.267448"
+            filePath = "BlutoothScannerUITests/BlutoothScannerUITests.swift"
+            timestampString = "490603801.170002"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "58"
-            endingLineNumber = "58"
-            landmarkName = "peripheral(_:didDiscoverServices:)"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
+            landmarkName = "testExample()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -105,29 +105,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "BlutoothScanner/DeviceListViewController.swift"
-            timestampString = "490286508.267448"
+            filePath = "BlutoothScannerUITests/UITestDeviceListViewController.swift"
+            timestampString = "490603885.701457"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "63"
-            endingLineNumber = "63"
-            landmarkName = "peripheral(_:didDiscoverCharacteristicsForService:error:)"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "BlutoothScanner/DeviceListViewController.swift"
-            timestampString = "490286508.267448"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "peripheral(_:didUpdateValueForCharacteristic:error:)"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "mockData()"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
