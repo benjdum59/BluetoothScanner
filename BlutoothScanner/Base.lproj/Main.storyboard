@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="77b-gw-3rV">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="77b-gw-3rV">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -64,6 +64,9 @@
                                                         <constraint firstAttribute="width" constant="50" id="JNP-1n-Zm8"/>
                                                         <constraint firstAttribute="height" constant="50" id="hHD-1H-h5y"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <action selector="showInfoTapped:" destination="nAN-kY-bLc" eventType="touchUpInside" id="eVJ-TI-u4t"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yel-ny-xus">
                                                     <rect key="frame" x="8" y="8" width="526" height="21"/>
@@ -125,11 +128,30 @@
                     <connections>
                         <outlet property="activityIndicator" destination="fzU-Oe-gRM" id="8xs-8E-ZCe"/>
                         <outlet property="deviceTableView" destination="562-NK-7xS" id="Puy-YG-eYR"/>
+                        <segue destination="iLX-Ka-xXd" kind="show" identifier="showInfo" id="wCW-8C-Lxd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wI9-gA-Q5y" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="691" y="396"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="YmH-19-FCs">
+            <objects>
+                <viewController id="iLX-Ka-xXd" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L4a-hS-w1f"/>
+                        <viewControllerLayoutGuide type="bottom" id="kpt-Wc-Na3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Pf7-C7-JEH">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9AT-ID-w8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1354" y="395"/>
         </scene>
     </scenes>
 </document>

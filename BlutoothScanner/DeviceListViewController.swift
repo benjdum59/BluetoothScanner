@@ -9,18 +9,20 @@
 import UIKit
 import CoreBluetooth
 
-class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource {
+class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource, PeripheralTableViewCellDelegate {
     private var centralManager : CBCentralManager!
     let kSecondsToWait : Int64 = 10
-    var peripherals : [CBPeripheral] = []
+    private var peripherals : [CBPeripheral] = []
     @IBOutlet weak var deviceTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
         activityIndicator.stopAnimating()
+        centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,7 +40,11 @@ class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPe
         return cell
     }
     
-    dynamic func centralManagerDidUpdateState(central: CBCentralManager) {
+    func showInfoTapped(peripheral: CBPeripheral) {
+        peripheral.discoverServices(nil)
+    }
+    
+    func centralManagerDidUpdateState(central: CBCentralManager) {
         switch (central.state) {
         case .Unsupported:
             print("Unsupported")
@@ -58,29 +64,37 @@ class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPe
     }
     
     
+    
+    
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
+        print("didDiscoverPeripheral")
+        peripheral.delegate = self
         peripherals.append(peripheral)
         deviceTableView.reloadData()
         
     }
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
-        print("1")
+        print("didConnectPeripheral")
+        peripheral.discoverServices(nil)
         
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
-        print("1")
+        print("didDiscoverServices")
+        for service in peripheral.services! {
+            peripheral.discoverCharacteristics(nil, forService: service)
+        }
         
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
-        print("1")
+        print("didDiscoverCharacteristicsForService")
         
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
-        print("1")
+        print("didUpdateValueForCharacteristic")
         
     }
     
@@ -88,6 +102,10 @@ class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPe
         peripherals = []
         deviceTableView.reloadData()
         refreshDevices()
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        getServices(peripherals[indexPath.row])
     }
     
     private func refreshDevices(){
@@ -101,6 +119,10 @@ class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPe
             self.centralManager.stopScan()
             self.activityIndicator.stopAnimating()
         }
+    }
+    
+    private func getServices(peripheral: CBPeripheral) {
+        self.centralManager.connectPeripheral(peripheral, options: nil)
     }
     
     

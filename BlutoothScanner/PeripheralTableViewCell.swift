@@ -9,13 +9,18 @@
 import UIKit
 import CoreBluetooth
 
+protocol PeripheralTableViewCellDelegate : class {
+    func showInfoTapped(peripheral: CBPeripheral)
+}
+
 class PeripheralTableViewCell: UITableViewCell {
     @IBOutlet weak var name: UILabel!
     @IBOutlet weak var status: UILabel!
+    weak var delegate : PeripheralTableViewCellDelegate?
     
     var peripheral : CBPeripheral! {
         didSet {
-            name.text = peripheral.name
+            name.text = peripheral.name ?? peripheral.identifier.UUIDString
             status.text = peripheral.state == .Connected ? "Connected" : "Not Connected"
         }
     }
@@ -30,5 +35,7 @@ class PeripheralTableViewCell: UITableViewCell {
         
         // Configure the view for the selected state
     }
-    
+    @IBAction func showInfoTapped(sender: UIButton) {
+        delegate?.showInfoTapped(peripheral)
+    }
 }

@@ -19,6 +19,8 @@
 		096A71991D39226500B0350A /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 096A71981D39226500B0350A /* CoreBluetooth.framework */; };
 		096A719B1D3922CB00B0350A /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A719A1D3922CB00B0350A /* BLEManager.swift */; };
 		096A719E1D39236500B0350A /* BLEHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A719D1D39236500B0350A /* BLEHandler.swift */; };
+		09A0FC9E1D3F73170058D717 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0FC9D1D3F73170058D717 /* Swizzle.swift */; };
+		09A0FC9F1D3F73180058D717 /* Swizzle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09A0FC9D1D3F73170058D717 /* Swizzle.swift */; };
 		09E3FA621D3E028600469062 /* PeripheralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E3FA611D3E028600469062 /* PeripheralTableViewCell.swift */; };
 		09E3FA631D3E063700469062 /* PeripheralTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09E3FA611D3E028600469062 /* PeripheralTableViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -58,6 +60,7 @@
 		096A71981D39226500B0350A /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		096A719A1D3922CB00B0350A /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		096A719D1D39236500B0350A /* BLEHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEHandler.swift; sourceTree = "<group>"; };
+		09A0FC9D1D3F73170058D717 /* Swizzle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Swizzle.swift; sourceTree = "<group>"; };
 		09E3FA611D3E028600469062 /* PeripheralTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -111,16 +114,15 @@
 		096A71691D3921C300B0350A /* BlutoothScanner */ = {
 			isa = PBXGroup;
 			children = (
-				096A719C1D39235A00B0350A /* New Group */,
 				096A716A1D3921C300B0350A /* AppDelegate.swift */,
 				096A716C1D3921C300B0350A /* DeviceListViewController.swift */,
+				09E3FA611D3E028600469062 /* PeripheralTableViewCell.swift */,
 				096A716E1D3921C300B0350A /* Main.storyboard */,
 				096A71711D3921C300B0350A /* Assets.xcassets */,
 				096A71731D3921C300B0350A /* LaunchScreen.storyboard */,
 				096A71761D3921C300B0350A /* Info.plist */,
 				096A719A1D3922CB00B0350A /* BLEManager.swift */,
 				096A719D1D39236500B0350A /* BLEHandler.swift */,
-				09E3FA611D3E028600469062 /* PeripheralTableViewCell.swift */,
 			);
 			path = BlutoothScanner;
 			sourceTree = "<group>";
@@ -137,6 +139,7 @@
 		096A71891D3921C300B0350A /* BlutoothScannerUITests */ = {
 			isa = PBXGroup;
 			children = (
+				09A0FC9C1D3F73070058D717 /* Helpers */,
 				096A718A1D3921C300B0350A /* BlutoothScannerUITests.swift */,
 				096A718C1D3921C400B0350A /* Info.plist */,
 				0965270A1D3CD16F00833CEF /* UITestDeviceListViewController.swift */,
@@ -144,11 +147,12 @@
 			path = BlutoothScannerUITests;
 			sourceTree = "<group>";
 		};
-		096A719C1D39235A00B0350A /* New Group */ = {
+		09A0FC9C1D3F73070058D717 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				09A0FC9D1D3F73170058D717 /* Swizzle.swift */,
 			);
-			name = "New Group";
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,6 +286,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09A0FC9E1D3F73170058D717 /* Swizzle.swift in Sources */,
 				096A719E1D39236500B0350A /* BLEHandler.swift in Sources */,
 				096A716D1D3921C300B0350A /* DeviceListViewController.swift in Sources */,
 				096A719B1D3922CB00B0350A /* BLEManager.swift in Sources */,
@@ -304,6 +309,7 @@
 			files = (
 				096A718B1D3921C300B0350A /* BlutoothScannerUITests.swift in Sources */,
 				0965270B1D3CD16F00833CEF /* UITestDeviceListViewController.swift in Sources */,
+				09A0FC9F1D3F73180058D717 /* Swizzle.swift in Sources */,
 				0965270C1D3CD19100833CEF /* DeviceListViewController.swift in Sources */,
 				09E3FA631D3E063700469062 /* PeripheralTableViewCell.swift in Sources */,
 			);
@@ -433,11 +439,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BlutoothScanner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bdumont.BlutoothScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -445,11 +454,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = BlutoothScanner/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.bdumont.BlutoothScanner;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 			};
 			name = Release;
 		};
