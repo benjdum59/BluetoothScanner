@@ -9,6 +9,7 @@
 import UIKit
 import CoreBluetooth
 
+/// List all peripherals
 class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource, PeripheralTableViewCellDelegate {
     private var centralManager : CBCentralManager!
     let kSecondsToWait : Int64 = 60
@@ -54,6 +55,11 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
         return cell
     }
     
+    /**
+     Show services from current peripheral
+     
+     - parameter peripheral: CBPeripheral : current peripheral from tableViewCell
+     */
     func showInfoTapped(peripheral: CBPeripheral) {
         self.showInformations = true
         self.centralManager.connectPeripheral(peripheral, options: nil)
@@ -77,9 +83,6 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
         }
         
     }
-    
-    
-    
     
     func centralManager(central: CBCentralManager, didDiscoverPeripheral peripheral: CBPeripheral, advertisementData: [String : AnyObject], RSSI: NSNumber) {
         print("didDiscoverPeripheral")
@@ -118,6 +121,11 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
         
     }
     
+    /**
+     Reset the current list and detects peripherals during a certain amout of time
+     
+     - parameter sender: UIBarButtonItem
+     */
     @IBAction func refreshTapped(sender: UIBarButtonItem) {
         peripherals = []
         deviceTableView.reloadData()
@@ -133,6 +141,9 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
         deviceTableView.reloadData()
     }
     
+    /**
+     Refresh peripherals
+     */
     private func refreshDevices(){
         self.centralManager.stopScan()
         activityIndicator.startAnimating()

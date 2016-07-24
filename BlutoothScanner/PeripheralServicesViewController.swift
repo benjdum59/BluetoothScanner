@@ -16,6 +16,7 @@ class PeripheralServicesViewController: UIViewController, UITableViewDelegate, U
     @IBOutlet weak var isPrimaryLabel: UILabel!
     @IBOutlet weak var uuidLabel: UILabel!
     
+    /// Get service characteristics as soon as we got peripheral
     var peripheral: CBPeripheral! {
         didSet {
             peripheral.delegate = self
@@ -49,6 +50,11 @@ class PeripheralServicesViewController: UIViewController, UITableViewDelegate, U
         return ""
     }
     
+    /**
+     Perform segue for seeing characteristics
+     
+     - parameter service: CBService: current service from tableViewCell
+     */
     func showInfoTapped(service: CBService) {
         currentService = service
         performSegueWithIdentifier("showCharacteristics", sender: self)

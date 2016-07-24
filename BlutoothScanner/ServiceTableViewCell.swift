@@ -26,6 +26,7 @@ class ServiceTableViewCell: UITableViewCell {
         // Initialization code
     }
     
+    /// Init UI
     var service : CBService! {
         didSet {
             self.uuidLabel.text = service.UUID.UUIDString

@@ -18,6 +18,7 @@ class PeripheralTableViewCell: UITableViewCell {
     @IBOutlet weak var status: UILabel!
     weak var delegate : PeripheralTableViewCellDelegate?
     
+    /// Init UI
     var peripheral : CBPeripheral! {
         didSet {
             name.text = peripheral.name ?? peripheral.identifier.UUIDString

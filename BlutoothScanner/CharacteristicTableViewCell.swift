@@ -10,10 +10,10 @@ import UIKit
 import CoreBluetooth
 
 class CharacteristicTableViewCell: UITableViewCell {
-    //<CBCharacteristic: 0x17ea52d0, UUID = Manufacturer Name String, properties = 0x2, value = (null), notifying = NO>
     @IBOutlet weak var uuidLabel: UILabel!
     @IBOutlet weak var notifyingLabel: UILabel!
     
+    /// Init UI
     var characteristic : CBCharacteristic! {
         didSet {
             self.uuidLabel.text = String(format:"UUID: %@", characteristic.UUID.UUIDString)
