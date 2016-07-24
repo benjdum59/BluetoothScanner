@@ -175,8 +175,20 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="detailDisclosure" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YDd-WR-Nhb">
+                                                    <rect key="frame" x="542" y="4" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="50" id="BSL-nl-UEz"/>
+                                                        <constraint firstAttribute="width" constant="50" id="yN3-6o-hpf"/>
+                                                    </constraints>
+                                                    <connections>
+                                                        <action selector="informationTapped:" destination="cAk-DQ-JOs" eventType="touchUpInside" id="E30-ku-cD2"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="YDd-WR-Nhb" secondAttribute="trailing" constant="8" id="1ep-4m-25d"/>
+                                                <constraint firstItem="YDd-WR-Nhb" firstAttribute="centerY" secondItem="osE-cP-KZP" secondAttribute="centerY" id="680-1D-mt9"/>
                                                 <constraint firstAttribute="trailing" secondItem="XaT-Lm-JIE" secondAttribute="trailing" constant="8" id="Fxe-G7-rII"/>
                                                 <constraint firstItem="XaT-Lm-JIE" firstAttribute="leading" secondItem="osE-cP-KZP" secondAttribute="leading" constant="8" id="U2S-sr-lRZ"/>
                                                 <constraint firstItem="mfk-jh-Ept" firstAttribute="leading" secondItem="XaT-Lm-JIE" secondAttribute="leading" id="b7I-bT-Ec8"/>
@@ -187,6 +199,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="informationButton" destination="YDd-WR-Nhb" id="leU-h6-l04"/>
                                             <outlet property="primaryServiceLabel" destination="mfk-jh-Ept" id="n9V-fn-NCm"/>
                                             <outlet property="uuidLabel" destination="XaT-Lm-JIE" id="Aq6-va-HUN"/>
                                         </connections>
@@ -207,10 +220,85 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Service List" id="TpX-8M-GjY"/>
+                    <connections>
+                        <outlet property="serviceTableView" destination="deU-EK-Avp" id="LhL-Gk-Ftb"/>
+                        <segue destination="kLH-ry-9g2" kind="show" identifier="showCharacteristics" id="cQz-Ev-CeI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9AT-ID-w8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1354" y="395"/>
+        </scene>
+        <!--Characteristics List-->
+        <scene sceneID="T7U-Vx-frG">
+            <objects>
+                <viewController id="kLH-ry-9g2" customClass="CharacteristicViewController" customModule="BlutoothScanner" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZPm-XS-iZf"/>
+                        <viewControllerLayoutGuide type="bottom" id="BHP-WJ-qVv"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="a3h-4w-gIw">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="73" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="j84-Lc-Qr3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="characteristicCell" rowHeight="73" id="Njo-m6-ldI" customClass="CharacteristicTableViewCell" customModule="BlutoothScanner" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92" width="600" height="73"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Njo-m6-ldI" id="wWW-i6-HvY">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="72.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="UUID" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="qxf-1a-uYl">
+                                                    <rect key="frame" x="8" y="8" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notifying" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sEj-ao-DWu">
+                                                    <rect key="frame" x="8" y="37" width="584" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="qxf-1a-uYl" firstAttribute="leading" secondItem="wWW-i6-HvY" secondAttribute="leading" constant="8" id="VY7-eR-gkj"/>
+                                                <constraint firstAttribute="trailing" secondItem="sEj-ao-DWu" secondAttribute="trailing" constant="8" id="WTQ-Uf-1gy"/>
+                                                <constraint firstItem="sEj-ao-DWu" firstAttribute="leading" secondItem="wWW-i6-HvY" secondAttribute="leading" constant="8" id="Zit-US-ADp"/>
+                                                <constraint firstItem="sEj-ao-DWu" firstAttribute="top" secondItem="qxf-1a-uYl" secondAttribute="bottom" constant="8" id="ar1-8a-dsC"/>
+                                                <constraint firstItem="qxf-1a-uYl" firstAttribute="top" secondItem="wWW-i6-HvY" secondAttribute="top" constant="8" id="p0y-yT-9QK"/>
+                                                <constraint firstAttribute="trailing" secondItem="qxf-1a-uYl" secondAttribute="trailing" constant="8" id="zMS-ym-DG0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="notifyingLabel" destination="sEj-ao-DWu" id="dwy-VE-hgh"/>
+                                            <outlet property="uuidLabel" destination="qxf-1a-uYl" id="3pe-Wb-T35"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="kLH-ry-9g2" id="hUh-aD-sN1"/>
+                                    <outlet property="delegate" destination="kLH-ry-9g2" id="8QO-O3-OtG"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="j84-Lc-Qr3" secondAttribute="trailing" id="07V-Rh-Q71"/>
+                            <constraint firstAttribute="bottom" secondItem="j84-Lc-Qr3" secondAttribute="bottom" id="8St-fA-rWV"/>
+                            <constraint firstItem="j84-Lc-Qr3" firstAttribute="top" secondItem="a3h-4w-gIw" secondAttribute="top" id="L1W-p8-aDq"/>
+                            <constraint firstItem="j84-Lc-Qr3" firstAttribute="leading" secondItem="a3h-4w-gIw" secondAttribute="leading" id="nBd-5g-CKz"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Characteristics List" id="4bq-30-uVm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YF7-2L-6iv" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1990" y="396"/>
         </scene>
     </scenes>
 </document>

@@ -9,10 +9,18 @@
 import UIKit
 import CoreBluetooth
 
+protocol ServiceTableViewCellDelegate : class {
+    func showInfoTapped(service: CBService)
+}
+
 class ServiceTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var informationButton: UIButton!
     @IBOutlet weak var primaryServiceLabel: UILabel!
     @IBOutlet weak var uuidLabel: UILabel!
+    
+    weak var delegate : ServiceTableViewCellDelegate?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -22,6 +30,7 @@ class ServiceTableViewCell: UITableViewCell {
         didSet {
             self.uuidLabel.text = service.UUID.UUIDString
             self.primaryServiceLabel.text = String(format: "Primary service: %@", service.isPrimary.toString())
+            self.informationButton.hidden = service.characteristics == nil
         }
     }
     
@@ -33,4 +42,7 @@ class ServiceTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    @IBAction func informationTapped(sender: UIButton) {
+        delegate?.showInfoTapped(service)
+    }
 }

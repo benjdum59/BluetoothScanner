@@ -28,6 +28,8 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
         showInformations = false
         centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
         centralManager.delegate = self
+        //Make central manager accessible for all classes
+//        dataManager.centralManager = centralManager
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -100,19 +102,15 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
         for service in peripheral.services! {
             peripheral.discoverCharacteristics(nil, forService: service)
         }
-//        if showInformations {
-//            self.selectedPeripheral = peripheral
-//            self.performSegueWithIdentifier("showServices", sender: self)
-//        }
+        if showInformations {
+            self.selectedPeripheral = peripheral
+            self.performSegueWithIdentifier("showServices", sender: self)
+        }
         
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
         print("didDiscoverCharacteristicsForService")
-        if showInformations {
-            self.selectedPeripheral = peripheral
-            self.performSegueWithIdentifier("showServices", sender: self)
-        }
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
@@ -154,6 +152,7 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
         if segue.identifier == "showServices" {
             let destVC = segue.destinationViewController as! PeripheralServicesViewController
             destVC.peripheral = selectedPeripheral
+            dataManager.selectedPerpheral = selectedPeripheral
         }
     }
 }

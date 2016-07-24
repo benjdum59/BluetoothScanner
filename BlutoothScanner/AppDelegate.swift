@@ -8,10 +8,14 @@
 
 import UIKit
 
+let dataManager :DataManager = (UIApplication.sharedApplication().delegate as! AppDelegate).dataManager
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    let dataManager: DataManager = DataManager()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {

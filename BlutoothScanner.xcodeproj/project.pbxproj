@@ -11,6 +11,9 @@
 		03B88F6D1D44ECBF009B8704 /* ServiceTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B88F6C1D44ECBF009B8704 /* ServiceTableViewCell.swift */; };
 		03B88F701D44EE51009B8704 /* Bool+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B88F6F1D44EE51009B8704 /* Bool+toString.swift */; };
 		03B88F711D44F0BC009B8704 /* Bool+toString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B88F6F1D44EE51009B8704 /* Bool+toString.swift */; };
+		03B88F741D45130A009B8704 /* CharacteristicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B88F731D45130A009B8704 /* CharacteristicViewController.swift */; };
+		03B88F761D451669009B8704 /* CharacteristicTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B88F751D451669009B8704 /* CharacteristicTableViewCell.swift */; };
+		03B88F7A1D451F3B009B8704 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03B88F791D451F3B009B8704 /* DataManager.swift */; };
 		096A716B1D3921C300B0350A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A716A1D3921C300B0350A /* AppDelegate.swift */; };
 		096A716D1D3921C300B0350A /* PeripheralListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 096A716C1D3921C300B0350A /* PeripheralListViewController.swift */; };
 		096A71701D3921C300B0350A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 096A716E1D3921C300B0350A /* Main.storyboard */; };
@@ -44,6 +47,9 @@
 		03B88F671D44E5E4009B8704 /* PeripheralServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeripheralServicesViewController.swift; sourceTree = "<group>"; };
 		03B88F6C1D44ECBF009B8704 /* ServiceTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceTableViewCell.swift; sourceTree = "<group>"; };
 		03B88F6F1D44EE51009B8704 /* Bool+toString.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bool+toString.swift"; sourceTree = "<group>"; };
+		03B88F731D45130A009B8704 /* CharacteristicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicViewController.swift; sourceTree = "<group>"; };
+		03B88F751D451669009B8704 /* CharacteristicTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacteristicTableViewCell.swift; sourceTree = "<group>"; };
+		03B88F791D451F3B009B8704 /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		096A71671D3921C300B0350A /* BlutoothScanner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlutoothScanner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		096A716A1D3921C300B0350A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		096A716C1D3921C300B0350A /* PeripheralListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PeripheralListViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +100,7 @@
 				096A716E1D3921C300B0350A /* Main.storyboard */,
 				03B88F6A1D44EA8A009B8704 /* Peripheral */,
 				03B88F6B1D44EAAC009B8704 /* Service */,
+				03B88F721D4512E8009B8704 /* Characteristic */,
 			);
 			name = Interface;
 			sourceTree = "<group>";
@@ -124,6 +131,23 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		03B88F721D4512E8009B8704 /* Characteristic */ = {
+			isa = PBXGroup;
+			children = (
+				03B88F731D45130A009B8704 /* CharacteristicViewController.swift */,
+				03B88F751D451669009B8704 /* CharacteristicTableViewCell.swift */,
+			);
+			name = Characteristic;
+			sourceTree = "<group>";
+		};
+		03B88F7B1D45256C009B8704 /* DataManager */ = {
+			isa = PBXGroup;
+			children = (
+				03B88F791D451F3B009B8704 /* DataManager.swift */,
+			);
+			name = DataManager;
+			sourceTree = "<group>";
+		};
 		096A715E1D3921C300B0350A = {
 			isa = PBXGroup;
 			children = (
@@ -148,6 +172,7 @@
 		096A71691D3921C300B0350A /* BlutoothScanner */ = {
 			isa = PBXGroup;
 			children = (
+				03B88F7B1D45256C009B8704 /* DataManager */,
 				03B88F6E1D44EE3B009B8704 /* Utils */,
 				03B88F691D44EA7C009B8704 /* Interface */,
 				096A716A1D3921C300B0350A /* AppDelegate.swift */,
@@ -308,10 +333,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				03B88F6D1D44ECBF009B8704 /* ServiceTableViewCell.swift in Sources */,
+				03B88F761D451669009B8704 /* CharacteristicTableViewCell.swift in Sources */,
 				03B88F681D44E5E4009B8704 /* PeripheralServicesViewController.swift in Sources */,
 				03B88F701D44EE51009B8704 /* Bool+toString.swift in Sources */,
 				096A716D1D3921C300B0350A /* PeripheralListViewController.swift in Sources */,
+				03B88F741D45130A009B8704 /* CharacteristicViewController.swift in Sources */,
 				09E3FA621D3E028600469062 /* PeripheralTableViewCell.swift in Sources */,
+				03B88F7A1D451F3B009B8704 /* DataManager.swift in Sources */,
 				096A716B1D3921C300B0350A /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
