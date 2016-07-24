@@ -9,12 +9,14 @@
 import UIKit
 import CoreBluetooth
 
-class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource, PeripheralTableViewCellDelegate {
+class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, CBPeripheralDelegate, UITableViewDelegate, UITableViewDataSource, PeripheralTableViewCellDelegate {
     private var centralManager : CBCentralManager!
-    let kSecondsToWait : Int64 = 10
+    let kSecondsToWait : Int64 = 60
     private var peripherals : [CBPeripheral] = []
     @IBOutlet weak var deviceTableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    private var showInformations = false
+    private var selectedPeripheral : CBPeripheral?
     
     
     
@@ -22,7 +24,14 @@ class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPe
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         activityIndicator.stopAnimating()
+        showInformations = false
         centralManager = CBCentralManager(delegate: self, queue: dispatch_get_main_queue())
+        centralManager.delegate = self
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        showInformations = false
     }
     
     override func didReceiveMemoryWarning() {
@@ -37,11 +46,13 @@ class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("peripheralCell") as! PeripheralTableViewCell
         cell.peripheral = peripherals[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
     func showInfoTapped(peripheral: CBPeripheral) {
-        peripheral.discoverServices(nil)
+        self.showInformations = true
+        self.centralManager.connectPeripheral(peripheral, options: nil)
     }
     
     func centralManagerDidUpdateState(central: CBCentralManager) {
@@ -76,14 +87,20 @@ class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPe
     
     func centralManager(central: CBCentralManager, didConnectPeripheral peripheral: CBPeripheral) {
         print("didConnectPeripheral")
-        peripheral.discoverServices(nil)
-        
+        if (showInformations) {
+            peripheral.discoverServices(nil)
+        }
+        self.deviceTableView.reloadData()
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
         print("didDiscoverServices")
-        for service in peripheral.services! {
-            peripheral.discoverCharacteristics(nil, forService: service)
+//        for service in peripheral.services! {
+//            peripheral.discoverCharacteristics(nil, forService: service)
+//        }
+        if showInformations {
+            self.selectedPeripheral = peripheral
+            self.performSegueWithIdentifier("showServices", sender: self)
         }
         
     }
@@ -105,14 +122,16 @@ class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPe
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        getServices(peripherals[indexPath.row])
+        self.centralManager.connectPeripheral(peripherals[indexPath.row], options: nil)
     }
     
     private func refreshDevices(){
-        print("Start scanning")
+        self.centralManager.stopScan()
         activityIndicator.startAnimating()
         let options = [CBCentralManagerScanOptionAllowDuplicatesKey : 0]
+        print("Start SCanning")
         centralManager.scanForPeripheralsWithServices(nil, options: options)
+
         let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), kSecondsToWait * Int64(NSEC_PER_SEC))
         dispatch_after(time, dispatch_get_main_queue()) {
             print("Stop Scanning")
@@ -121,10 +140,11 @@ class DeviceListViewController: UIViewController, CBCentralManagerDelegate, CBPe
         }
     }
     
-    private func getServices(peripheral: CBPeripheral) {
-        self.centralManager.connectPeripheral(peripheral, options: nil)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "showServices" {
+            let destVC = segue.destinationViewController as! PeripheralServicesViewController
+            destVC.peripheral = selectedPeripheral
+        }
     }
-    
-    
 }
 
