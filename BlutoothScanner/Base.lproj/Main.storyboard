@@ -135,7 +135,7 @@
             </objects>
             <point key="canvasLocation" x="691" y="396"/>
         </scene>
-        <!--Peripheral Services View Controller-->
+        <!--Service List-->
         <scene sceneID="YmH-19-FCs">
             <objects>
                 <viewController id="iLX-Ka-xXd" customClass="PeripheralServicesViewController" customModule="BlutoothScanner" customModuleProvider="target" sceneMemberID="viewController">
@@ -147,7 +147,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="deU-EK-Avp">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="57" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="deU-EK-Avp">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <view key="tableFooterView" contentMode="scaleToFill" id="l3x-bo-9G9">
@@ -206,6 +206,7 @@
                             <constraint firstItem="deU-EK-Avp" firstAttribute="top" secondItem="Pf7-C7-JEH" secondAttribute="top" id="YCq-eU-vsN"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Service List" id="TpX-8M-GjY"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9AT-ID-w8a" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

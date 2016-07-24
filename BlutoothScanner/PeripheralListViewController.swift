@@ -106,8 +106,7 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
-        print("didDiscoverCharacteristicsForService")
-        
+        print("didDiscoverCharacteristicsForService")        
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
@@ -122,7 +121,12 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
     }
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        self.centralManager.connectPeripheral(peripherals[indexPath.row], options: nil)
+        guard peripherals[indexPath.row].state == .Connected else {
+            self.centralManager.connectPeripheral(peripherals[indexPath.row], options: nil)
+            return
+        }
+        self.centralManager.cancelPeripheralConnection(peripherals[indexPath.row])
+        deviceTableView.reloadData()
     }
     
     private func refreshDevices(){
