@@ -17,6 +17,7 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     private var showInformations = false
     private var selectedPeripheral : CBPeripheral?
+    private var numberCharacteristics : Int = 0
     
     
     
@@ -32,6 +33,7 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         showInformations = false
+        numberCharacteristics = 0
     }
     
     override func didReceiveMemoryWarning() {
@@ -95,18 +97,22 @@ class PeripheralListViewController: UIViewController, CBCentralManagerDelegate, 
     
     func peripheral(peripheral: CBPeripheral, didDiscoverServices error: NSError?) {
         print("didDiscoverServices")
-//        for service in peripheral.services! {
-//            peripheral.discoverCharacteristics(nil, forService: service)
-//        }
-        if showInformations {
-            self.selectedPeripheral = peripheral
-            self.performSegueWithIdentifier("showServices", sender: self)
+        for service in peripheral.services! {
+            peripheral.discoverCharacteristics(nil, forService: service)
         }
+//        if showInformations {
+//            self.selectedPeripheral = peripheral
+//            self.performSegueWithIdentifier("showServices", sender: self)
+//        }
         
     }
     
     func peripheral(peripheral: CBPeripheral, didDiscoverCharacteristicsForService service: CBService, error: NSError?) {
-        print("didDiscoverCharacteristicsForService")        
+        print("didDiscoverCharacteristicsForService")
+        if showInformations {
+            self.selectedPeripheral = peripheral
+            self.performSegueWithIdentifier("showServices", sender: self)
+        }
     }
     
     func peripheral(peripheral: CBPeripheral, didUpdateValueForCharacteristic characteristic: CBCharacteristic, error: NSError?) {
